@@ -37,8 +37,12 @@ var app = new Vue({
         //获取当前用户信息
         getUserInfo() {
             this.$http.get(api.user.info).then(result => {
-                this.user = result.body.data;
-                this.pass.id = result.body.data.id;
+                if (result.body.code == 200){
+                    this.user = result.body.data;
+                    this.pass.id = result.body.data.id;
+                    this.user.password = null;
+                    this.user.salt = null;
+                }
             });
         },
 
