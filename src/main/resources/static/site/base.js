@@ -70,8 +70,12 @@ function current(event) {
     let link = event.toElement.attributes.getNamedItem('link').value;
 }
 window.onload = function () {
-    document.getElementsByClassName("count")[0].innerText = wordCount(document.getElementsByClassName("post-content")[0].innerText)
-    document.getElementsByClassName("time")[0].innerText = Math.round(document.getElementsByClassName("count")[0].innerText / 400)
+    if (document.getElementsByClassName("post-content")[0]){
+        document.getElementsByClassName("count")[0].innerText = wordCount(document.getElementsByClassName("post-content")[0].innerText)
+    }
+    if (document.getElementsByClassName("count")[0]) {
+        document.getElementsByClassName("time")[0].innerText = Math.round(document.getElementsByClassName("count")[0].innerText / 400)
+    }
 }
 //计算字数
 function wordCount(data){
